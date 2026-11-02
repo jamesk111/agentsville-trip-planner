@@ -29,8 +29,28 @@ The supplied project_lib.py is unchanged, including three existing trailing-whit
 
 The course key is stored in an ignored local .env file. No real key or executed notebook output is included in the repository. The provider listing request did not generate text. Actual model access and generation behavior will be checked when the first planner prompt is ready.
 
+## Stage 3 — November 2, 2026
+
+Completed the VacationInfo model and both date-based lookup cells. Traveler names and destination must be nonblank, travelers and interests cannot be empty, ages and budgets must be whole nonnegative integers, and departure cannot precede arrival. Unknown fields are rejected. The lookup cells use the validated date objects and include both endpoints.
+
+| Check | Result |
+| --- | --- |
+| Full offline test suite | Passed: 47 tests, including the existing setup tests. |
+| Real local notebook kernel | Passed: cells 1–12, using a fake key and blocked network connections. |
+| Sample lookup results | Passed: June 10–12, 2025; three forecasts and 12 activities. |
+| Alternate date ranges | Passed: one-day trip on June 15 and the full June 10–15 dataset. |
+| Invalid input | Rejected: missing fields, blank values, empty travelers/interests, unsupported interests, invalid/reversed dates, negative or noninteger budget, and invalid ages. |
+| Missing data | Clear failure for an unsupported city, out-of-range dates, or missing activities on one requested day. |
+| Notebook format and syntax | Passed. Remaining TODO cells: 15, 23, 28, 35. |
+| Environment and mock-data checks | Passed. |
+| Model requests | None made in this stage. |
+
+The same Windows ZeroMQ fallback warning appeared in the kernel test. The test passed and the kernel was shut down by the test client.
+
+The sample weather is clear on June 10, partly cloudy on June 11, and thunderstorms on June 12. The [Stage 3 walkthrough](stage-3-trip-inputs.md) lists the retrieved activities and explains the input rules.
+
 ## Rubric status
 
-No graded criterion is complete yet. The remaining TODO cells are 9, 11, 12, 15, 23, 28, and 35. The [rubric checklist](rubric-checklist.md) identifies the implementation and verification work for each criterion.
+R5 is complete: the vacation model matches the sample JSON, and both lookups use its validated dates. R1, R2, R3, R4, and R6 remain pending. There is no generated itinerary yet, and provider inference access remains unverified.
 
-The next stage defines VacationInfo and retrieves the trip data. That will address R5 after its model and lookup checks pass.
+Next: complete the initial planner prompt and include the TravelPlan schema, weather, activities, and traveler context. That stage will address R1 and part of R6, with actual model output required before marking them complete.

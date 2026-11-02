@@ -2,7 +2,7 @@
 
 Source: [Udacity project rubric](https://learn.udacity.com/cd14526?version=1.1.28&lessonKey=39b0a6da-dfbf-4314-ac52-1301c532334b&project=rubric), reviewed November 2, 2026. Requirements below are paraphrased. Cell numbers count all cells from 1, not execution counts.
 
-**Status after Stage 2:** setup is implemented. Every graded criterion below is still pending. I will check an item only after reviewing the implementation and recording evidence. Tests passing for setup do not complete the rubric.
+**Status after Stage 3:** R5 is complete. The other five graded criteria are pending. Completed items have implementation and test results recorded below; setup checks alone do not complete the rubric.
 
 ## General prompt design
 
@@ -49,10 +49,10 @@ The instructions are stricter than the rubric in two places: include tool descri
 
 ### R5. VacationInfo — cells 9, 11, and 12
 
-- [ ] Define the fields to match the supplied traveler/vacation JSON.
-- [ ] Use the validated arrival and departure dates to retrieve weather and activities.
+- [x] Define the fields to match the supplied traveler/vacation JSON.
+- [x] Use the validated arrival and departure dates to retrieve weather and activities.
 
-Evidence needed: valid sample input, meaningful invalid-input tests, and retrieved records for every sample trip day. The date range includes arrival and departure.
+Verified November 2, 2026. [Model and lookup tests](../tests/test_trip_inputs.py) cover required fields, invalid input, missing data, and one-day, sample, and full-dataset date ranges. The [kernel test](../tests/test_notebook_setup.py) executes cells 1–12 with network requests blocked and checks three forecasts and 12 activities. See the [sample results](stage-3-trip-inputs.md).
 
 ### R6. TravelPlan schema — cells 15 and 35
 
