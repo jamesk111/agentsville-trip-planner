@@ -1,0 +1,87 @@
+# Rubric checklist
+
+Source: [Udacity project rubric](https://learn.udacity.com/cd14526?version=1.1.28&lessonKey=39b0a6da-dfbf-4314-ac52-1301c532334b&project=rubric), reviewed November 2, 2026. Requirements below are paraphrased. Cell numbers count all cells from 1, not execution counts.
+
+**Status after Stage 2:** setup is implemented. Every graded criterion below is still pending. I will check an item only after reviewing the implementation and recording evidence. Tests passing for setup do not complete the rubric.
+
+## General prompt design
+
+### R1. Initial itinerary prompt — cell 15
+
+- [ ] Assign a travel-planner role.
+- [ ] Guide detailed daily planning through instructions or examples.
+- [ ] Specify JSON matching TravelPlan.
+- [ ] Supply vacation information, weather, and activities as context.
+
+Evidence needed: final prompt text, schema inclusion, and a real generated itinerary that validates and reflects the supplied preferences. The starter passes VacationInfo in the user message; review that context together with the system prompt.
+
+### R2. Weather compatibility prompt — cell 23
+
+- [ ] Define the evaluator's role and task.
+- [ ] Specify the exact expected output format.
+- [ ] Include relevant examples for compatible and incompatible activities.
+
+Evidence needed: final prompt and tests covering an indoor activity, outdoor activity in bad weather, and an explicit indoor backup. Follow the assignment's instruction to assume compatibility when evidence is insufficient. Check the model's final verdict rather than treating its explanation as proof.
+
+## Agent reasoning and tool use
+
+### R3. Activity lookup tool description — cell 28
+
+- [ ] Explain the tool's purpose and when to use it.
+- [ ] Document inputs, types, and formats: date as YYYY-MM-DD and city as a string.
+
+Evidence needed: completed docstring, generated tool description, and a working lookup for a supported date/city.
+
+### R4. Revision prompt and ReAct use — cell 35
+
+- [ ] State the revision role and task.
+- [ ] Explain the THINK-ACT-OBSERVE cycle.
+- [ ] List all four tools with purposes and argument requirements.
+- [ ] Specify ACTION as {"tool_name": "...", "arguments": {...}}.
+- [ ] Require completion through final_answer_tool.
+- [ ] Require run_evals_tool before final_answer_tool.
+
+Evidence needed: final prompt and an actual trace showing valid actions, useful observations, revisions, a successful evaluation of the final candidate, and the final-answer action. Match the returned plan to the evaluated candidate.
+
+The instructions are stricter than the rubric in two places: include tool descriptions dynamically, and evaluate both initially and again before finishing. I will follow those instructions as well.
+
+## Structured output validation
+
+### R5. VacationInfo — cells 9, 11, and 12
+
+- [ ] Define the fields to match the supplied traveler/vacation JSON.
+- [ ] Use the validated arrival and departure dates to retrieve weather and activities.
+
+Evidence needed: valid sample input, meaningful invalid-input tests, and retrieved records for every sample trip day. The date range includes arrival and departure.
+
+### R6. TravelPlan schema — cells 15 and 35
+
+- [ ] Include the TravelPlan JSON schema in at least one output-producing system prompt.
+
+Evidence needed: schema generated from the actual Pydantic model and present in the final prompt. I plan to include it in both prompts, as the rubric recommends.
+
+## Assignment and final-run checks
+
+These checks supplement the six graded criteria. They do not replace them.
+
+- [x] Download and inspect the official starter files.
+- [x] Configure a local environment and keep credentials outside the notebook.
+- [ ] Verify active provider access and actual inference with the course models.
+- [ ] Generate the initial TravelPlan and inspect the source-data matches.
+- [ ] Keep the city and dates correct; include each trip day.
+- [ ] Keep activity details unchanged from the supplied records.
+- [ ] Calculate total cost correctly and stay within the 130-unit sample budget.
+- [ ] Include activities relevant to both travelers.
+- [ ] Handle weather constraints, including indoor backups.
+- [ ] Incorporate feedback requesting at least two activities per day.
+- [ ] Check duplicate activities and overlapping times.
+- [ ] Exercise invalid tool calls and the revision step limit.
+- [ ] Pass all seven final notebook evaluations.
+- [ ] Run the completed notebook from a fresh kernel and record the result.
+- [ ] Review saved outputs and the submission ZIP contents.
+
+Optional narration is outside the six graded criteria. It is disabled by default.
+
+## Evidence record
+
+Update [validation.md](validation.md) as work progresses. For each completed criterion, record the relevant test, notebook output, or trace. A TODO scan is only an unfinished-work check; it does not grade prompt quality or trip correctness.

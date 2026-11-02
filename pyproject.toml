@@ -1,0 +1,26 @@
+[project]
+name = "agentsville-trip-planner"
+version = "0.1.0"
+description = "A notebook-based travel planner with structured itineraries and tool-guided revisions."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+authors = [{ name = "James Kline" }]
+dependencies = [
+    "json-repair==0.47.1",
+    "numexpr==2.11.0",
+    "openai==1.74.0",
+    "pandas==2.3.0",
+    "pydantic==2.11.7",
+    "python-dotenv==1.1.0",
+    "ipykernel>=6.29,<8",
+    "jupyterlab>=4.4,<5",
+    "nbformat>=5.10,<6",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "nbclient>=0.10,<1", "httpx>=0.27,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
