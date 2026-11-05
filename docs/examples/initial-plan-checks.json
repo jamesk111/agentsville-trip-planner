@@ -1,0 +1,321 @@
+{
+  "date": "2026-11-05",
+  "scope": "Three live checks of the final initial-planner prompt. Weather judgments reviewed manually; LLM weather evaluator and revision agent remain unfinished.",
+  "runs": [
+    {
+      "case": "sample",
+      "requests": 1,
+      "usage": [
+        {
+          "model": "gpt-4.1-mini-2025-04-14",
+          "usage": {
+            "completion_tokens": 2298,
+            "prompt_tokens": 4827,
+            "total_tokens": 7125,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "supplied_evaluations": {
+        "success": true,
+        "failures": [],
+        "eval_functions": [
+          "eval_start_end_dates_match",
+          "eval_total_cost_is_accurate",
+          "eval_total_cost_is_within_budget",
+          "eval_itinerary_events_match_actual_events",
+          "eval_itinerary_satisfies_interests"
+        ]
+      },
+      "supplemental_checks": [
+        "city",
+        "daily coverage",
+        "weather record match",
+        "activity date placement",
+        "nonoverlapping times",
+        "unique activities",
+        "recommendation reasons"
+      ],
+      "total_cost": 115,
+      "budget": 130,
+      "days": [
+        {
+          "date": "2025-06-10",
+          "weather": "clear",
+          "activities": [
+            {
+              "id": "event-2025-06-10-0",
+              "name": "FutureTech Breakfast Meet-Up",
+              "price": 20,
+              "reasons": [
+                "Yuri: technology.",
+                "Event is held indoors and fits the clear weather for an indoor tech interest."
+              ]
+            },
+            {
+              "id": "event-2025-06-10-1",
+              "name": "Serve & Savor: Tennis and Taste Luncheon",
+              "price": 20,
+              "reasons": [
+                "Yuri: cooking, tennis.",
+                "Weather is clear, so an outdoor activity with no indoor backup is suitable."
+              ]
+            },
+            {
+              "id": "event-2025-06-10-3",
+              "name": "AgentsVille Twilight Writing Escape",
+              "price": 15,
+              "reasons": [
+                "Hiro: reading, art.",
+                "Event is held indoors, perfect for evening after a full day, and matches Hiro's interests."
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-06-11",
+          "weather": "partly cloudy",
+          "activities": [
+            {
+              "id": "event-2025-06-11-1",
+              "name": "Tech Lunch & Learn: AI Frontiers",
+              "price": 20,
+              "reasons": [
+                "Yuri: technology.",
+                "Hiro: music.",
+                "Event is indoors and suited for partly cloudy weather."
+              ]
+            },
+            {
+              "id": "event-2025-06-11-3",
+              "name": "Palette & Palate: Art Meets Cooking Experience",
+              "price": 25,
+              "reasons": [
+                "Yuri: cooking.",
+                "Hiro: art.",
+                "Event is held indoors, ideal for evening and suits both travelers' interests."
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-06-12",
+          "weather": "thunderstorm",
+          "activities": [
+            {
+              "id": "event-2025-06-12-3",
+              "name": "Tech & Film Fusion Night",
+              "price": 15,
+              "reasons": [
+                "Yuri: technology.",
+                "Event is indoors and suitable for thunderstorm conditions."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "sample-repeat",
+      "requests": 1,
+      "usage": [
+        {
+          "model": "gpt-4.1-mini-2025-04-14",
+          "usage": {
+            "completion_tokens": 2452,
+            "prompt_tokens": 4827,
+            "total_tokens": 7279,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 4608
+            }
+          }
+        }
+      ],
+      "supplied_evaluations": {
+        "success": true,
+        "failures": [],
+        "eval_functions": [
+          "eval_start_end_dates_match",
+          "eval_total_cost_is_accurate",
+          "eval_total_cost_is_within_budget",
+          "eval_itinerary_events_match_actual_events",
+          "eval_itinerary_satisfies_interests"
+        ]
+      },
+      "supplemental_checks": [
+        "city",
+        "daily coverage",
+        "weather record match",
+        "activity date placement",
+        "nonoverlapping times",
+        "unique activities",
+        "recommendation reasons"
+      ],
+      "total_cost": 105,
+      "budget": 130,
+      "days": [
+        {
+          "date": "2025-06-10",
+          "weather": "clear",
+          "activities": [
+            {
+              "id": "event-2025-06-10-0",
+              "name": "FutureTech Breakfast Meet-Up",
+              "price": 20,
+              "reasons": [
+                "Yuri: technology.",
+                "Good clear weather allows outdoor/indoor activities."
+              ]
+            },
+            {
+              "id": "event-2025-06-10-1",
+              "name": "Serve & Savor: Tennis and Taste Luncheon",
+              "price": 20,
+              "reasons": [
+                "Yuri: cooking, tennis.",
+                "Weather is clear and sunny, ideal for outdoor event."
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-06-11",
+          "weather": "partly cloudy",
+          "activities": [
+            {
+              "id": "event-2025-06-11-0",
+              "name": "Morning Groove Dance Party",
+              "price": 15,
+              "reasons": [
+                "Hiro: music.",
+                "Indoor event suitable for partly cloudy weather."
+              ]
+            },
+            {
+              "id": "event-2025-06-11-1",
+              "name": "Tech Lunch & Learn: AI Frontiers",
+              "price": 20,
+              "reasons": [
+                "Yuri: technology.",
+                "Hiro: music.",
+                "Indoor event appropriate for weather."
+              ]
+            }
+          ]
+        },
+        {
+          "date": "2025-06-12",
+          "weather": "thunderstorm",
+          "activities": [
+            {
+              "id": "event-2025-06-12-1",
+              "name": "Soundtrack Picnic: Lunchtime Movies & Melodies",
+              "price": 15,
+              "reasons": [
+                "Hiro: music.",
+                "Outdoor event but with an explicit indoor backup in case of rain/thunderstorms."
+              ]
+            },
+            {
+              "id": "event-2025-06-12-3",
+              "name": "Tech & Film Fusion Night",
+              "price": 15,
+              "reasons": [
+                "Yuri: technology.",
+                "Indoor event suitable during afternoon thunderstorms."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "one-day",
+      "requests": 1,
+      "usage": [
+        {
+          "model": "gpt-4.1-mini-2025-04-14",
+          "usage": {
+            "completion_tokens": 852,
+            "prompt_tokens": 2967,
+            "total_tokens": 3819,
+            "completion_tokens_details": {
+              "accepted_prediction_tokens": 0,
+              "audio_tokens": 0,
+              "reasoning_tokens": 0,
+              "rejected_prediction_tokens": 0
+            },
+            "prompt_tokens_details": {
+              "audio_tokens": 0,
+              "cached_tokens": 0
+            }
+          }
+        }
+      ],
+      "supplied_evaluations": {
+        "success": true,
+        "failures": [],
+        "eval_functions": [
+          "eval_start_end_dates_match",
+          "eval_total_cost_is_accurate",
+          "eval_total_cost_is_within_budget",
+          "eval_itinerary_events_match_actual_events",
+          "eval_itinerary_satisfies_interests"
+        ]
+      },
+      "supplemental_checks": [
+        "city",
+        "daily coverage",
+        "weather record match",
+        "activity date placement",
+        "nonoverlapping times",
+        "unique activities",
+        "recommendation reasons"
+      ],
+      "total_cost": 30,
+      "budget": 30,
+      "days": [
+        {
+          "date": "2025-06-12",
+          "weather": "thunderstorm",
+          "activities": [
+            {
+              "id": "event-2025-06-12-1",
+              "name": "Soundtrack Picnic: Lunchtime Movies & Melodies",
+              "price": 15,
+              "reasons": [
+                "Hiro: music.",
+                "Chosen despite thunderstorm because event has an explicit indoor backup location at Harmony Hall."
+              ]
+            },
+            {
+              "id": "event-2025-06-12-3",
+              "name": "Tech & Film Fusion Night",
+              "price": 15,
+              "reasons": [
+                "Yuri: technology.",
+                "Event is fully indoors, suitable for thunderstorm weather."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

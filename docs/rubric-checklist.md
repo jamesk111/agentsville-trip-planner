@@ -2,18 +2,18 @@
 
 Source: [Udacity project rubric](https://learn.udacity.com/cd14526?version=1.1.28&lessonKey=39b0a6da-dfbf-4314-ac52-1301c532334b&project=rubric), reviewed November 2, 2026. Requirements below are paraphrased. Cell numbers count all cells from 1, not execution counts.
 
-**Status after Stage 3:** R5 is complete. The other five graded criteria are pending. Completed items have implementation and test results recorded below; setup checks alone do not complete the rubric.
+**Status after Stage 4:** R1, R5, and R6 are complete. R2, R3, and R4 are pending. Completed items have implementation and test results recorded below; setup checks alone do not complete the rubric.
 
 ## General prompt design
 
 ### R1. Initial itinerary prompt — cell 15
 
-- [ ] Assign a travel-planner role.
-- [ ] Guide detailed daily planning through instructions or examples.
-- [ ] Specify JSON matching TravelPlan.
-- [ ] Supply vacation information, weather, and activities as context.
+- [x] Assign a travel-planner role.
+- [x] Guide detailed daily planning through instructions or examples.
+- [x] Specify JSON matching TravelPlan.
+- [x] Supply vacation information, weather, and activities as context.
 
-Evidence needed: final prompt text, schema inclusion, and a real generated itinerary that validates and reflects the supplied preferences. The starter passes VacationInfo in the user message; review that context together with the system prompt.
+Verified November 5, 2026. The prompt in cell 15 includes the role, planning sequence, output format, examples, generated schema, and all context. The [planner tests](../tests/test_initial_planner.py) verify the embedded data and response handling. Three live checks of the final prompt passed; the [Stage 4 walkthrough](stage-4-initial-planner.md) and [recorded results](examples/initial-plan-checks.json) document the outputs and limits. Each itinerary used one request.
 
 ### R2. Weather compatibility prompt — cell 23
 
@@ -56,18 +56,19 @@ Verified November 2, 2026. [Model and lookup tests](../tests/test_trip_inputs.py
 
 ### R6. TravelPlan schema — cells 15 and 35
 
-- [ ] Include the TravelPlan JSON schema in at least one output-producing system prompt.
+- [x] Include the TravelPlan JSON schema in at least one output-producing system prompt.
 
-Evidence needed: schema generated from the actual Pydantic model and present in the final prompt. I plan to include it in both prompts, as the rubric recommends.
+Verified November 5, 2026. Cell 15 embeds TravelPlan.model_json_schema(); the context test compares the embedded JSON with the actual model schema. I still plan to include it in the revision prompt as recommended.
 
 ## Assignment and final-run checks
 
-These checks supplement the six graded criteria. They do not replace them.
+These checks supplement the six graded criteria. They do not replace them. The itinerary constraints below must be checked again on the final revised plan, even when an initial plan has passed them.
 
 - [x] Download and inspect the official starter files.
 - [x] Configure a local environment and keep credentials outside the notebook.
-- [ ] Verify active provider access and actual inference with the course models.
-- [ ] Generate the initial TravelPlan and inspect the source-data matches.
+- [x] Verify planner inference through Vocareum with gpt-4.1-mini.
+- [ ] Verify inference with the weather and traveler-feedback models.
+- [x] Generate the initial TravelPlan and inspect the source-data matches.
 - [ ] Keep the city and dates correct; include each trip day.
 - [ ] Keep activity details unchanged from the supplied records.
 - [ ] Calculate total cost correctly and stay within the 130-unit sample budget.

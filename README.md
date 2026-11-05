@@ -4,7 +4,7 @@ My project for Udacity's **Prompting for Effective LLM Reasoning and Planning** 
 
 The goal is to generate a trip itinerary, check it, and let a second agent revise it using tools. The destination is fictional. Weather and activity data come from the supplied Python file; model responses come from the Vocareum API.
 
-**Current status:** local setup, the vacation model, and date-based data retrieval are working. The sample trip returns three forecasts and 12 available activities. The planning prompts are still unfinished, so the notebook will not run end to end yet. I am working through it in stages so I can explain each part before moving on.
+**Current status:** the initial planner is working through Vocareum. The saved sample itinerary costs 115 of the 130-unit budget, and the final prompt passed three live checks. The weather-evaluation prompt, tool description, and revision prompt are still unfinished, so the notebook will not run end to end yet.
 
 The [rubric checklist](docs/rubric-checklist.md) tracks the requirements and the evidence still needed. [Validation notes](docs/validation.md) record what has actually been tested.
 
@@ -23,7 +23,7 @@ The revision agent uses a ReAct loop: the model chooses an action, Python runs t
 
 Pydantic checks the shape and types of the data. Separate evaluations check the trip itself. Passing one does not guarantee passing the other.
 
-The code stays in the course notebook for now. Setup and tests live alongside it. Decisions and tradeoffs are in [ADR 0001: local setup](docs/adr/0001-local-notebook-setup.md) and [ADR 0002: trip validation](docs/adr/0002-trip-validation.md).
+The code stays in the course notebook for now. Setup and tests live alongside it. Decisions and tradeoffs are in [ADR 0001: local setup](docs/adr/0001-local-notebook-setup.md), [ADR 0002: trip validation](docs/adr/0002-trip-validation.md), and [ADR 0003: initial planner](docs/adr/0003-initial-planner-prompt.md).
 
 ## Files
 
@@ -88,7 +88,7 @@ uv run --locked python scripts/check_environment.py
 uv run --locked jupyter lab
 ~~~
 
-Open project_starter.ipynb and select **Python (AgentsVille Trip Planner)**. Run cells in order. At the current stage, cells 1–12 are ready. Stop after the weather and activity tables; the planning TODOs are still present. See the [Stage 3 walkthrough](docs/stage-3-trip-inputs.md) for the sample results and input rules.
+Open project_starter.ipynb and select **Python (AgentsVille Trip Planner)**. Run cells in order. At the current stage, cells 1–22 are ready. Cell 16 makes a model request; the following completed cells run the Python evaluations. Stop before cell 23, which contains the unfinished weather prompt. See the [Stage 3 input walkthrough](docs/stage-3-trip-inputs.md) and [Stage 4 planner results](docs/stage-4-initial-planner.md).
 
 The sample trip is June 10–12, 2025, including both endpoints, with a budget of 130 fictional units. Keep those dates while building the project. The supplied data only covers June 10–15, 2025; changing to today's dates returns no activities or weather.
 
@@ -104,7 +104,7 @@ uv run --locked python scripts/check_environment.py
 uv run --locked python scripts/check_project.py
 ~~~
 
-The tests use fake keys and a mocked API response. The notebook input-stage test runs cells 1–12 in a real local kernel with outbound connections blocked inside the test cells. Model and lookup tests also cover invalid inputs and missing data. The tests do not run the unfinished planning cells or send model requests.
+The tests use fake keys and a mocked API response. The notebook input-stage test runs cells 1–12 in a real local kernel with outbound connections blocked inside the test cells. Model and lookup tests also cover invalid inputs and missing data. Planner tests also check the embedded schema/context, reject malformed responses, and replay the saved live sample. The offline suite sends no model requests.
 
 After configuring a key, this optional check reads the provider's model list without generating text:
 
