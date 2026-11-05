@@ -2,7 +2,7 @@
 
 Source: [Udacity project rubric](https://learn.udacity.com/cd14526?version=1.1.28&lessonKey=39b0a6da-dfbf-4314-ac52-1301c532334b&project=rubric), reviewed November 2, 2026. Requirements below are paraphrased. Cell numbers count all cells from 1, not execution counts.
 
-**Status after Stage 6:** all six graded criteria are implemented and checked. The final fresh live notebook run and submission package remain pending. Completed items have implementation and test results recorded below; setup checks alone do not complete the rubric.
+**Final status:** all six graded criteria are implemented and checked. The completed notebook ran from a fresh local kernel with live Vocareum responses on November 5, 2026, and the returned plan passed all eight final evaluations. See [Stage 7](stage-7-submission.md) for the final run and package review.
 
 ## General prompt design
 
@@ -79,11 +79,11 @@ These checks supplement the six graded criteria. They do not replace them. The i
 - [x] Check duplicate activities and overlapping times.
 - [x] Exercise invalid tool calls and the revision step limit.
 - [x] Pass all seven supplied final evaluations plus schedule consistency.
-- [x] Replay completed cells 1–38 in a local kernel using recorded/mocked model responses.
-- [ ] Run the completed notebook from a fresh kernel and record the result.
-- [ ] Review saved outputs and the submission ZIP contents.
+- [x] Replay the full notebook in a local kernel using recorded/mocked model responses.
+- [x] Run the completed notebook from a fresh kernel and record the result.
+- [x] Review saved outputs and the submission ZIP contents.
 
-Optional narration is outside the six graded criteria. It is disabled by default.
+The narrative summary is implemented in cell 40 and was generated and reviewed in the final live run. It is outside the six graded criteria. Audio is optional and is not generated.
 
 ## Evidence record
 

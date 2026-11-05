@@ -11,7 +11,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_completed_stages_run_in_project_kernel_without_network():
     notebook = nbformat.read(ROOT / "project_starter.ipynb", as_version=4)
-    notebook.cells = notebook.cells[:38]
     notebook.cells[15] = nbformat.v4.new_code_cell(
         'travel_plan_1 = TravelPlan.model_validate_json((PROJECT_ROOT / "docs/examples/initial-plan.json").read_text(encoding="utf-8"))'
     )
@@ -30,9 +29,14 @@ record = json.loads((Path.cwd() / "docs/examples/revision-checks.json").read_tex
 revision_responses = iter(entry["response"] for entry in record["trace"])
 offline_weather_models = []
 offline_feedback_models = []
+offline_summary_models = []
 
 def offline_completion(*, model, messages, **kwargs):
     prompt = messages[0]["content"]
+    if "Write a short narrative summary" in prompt:
+        assert model == "gpt-4.1-mini"
+        offline_summary_models.append(model)
+        return "Yuri and Hiro visit AgentsVille for three days, with activities costing 130 units."
     if "THINK-ACT-OBSERVE" in prompt:
         assert model == "gpt-4.1-mini"
         if messages[-1]["content"].startswith("Here is the itinerary for revision: "):
@@ -59,6 +63,8 @@ assert all(len(day.activity_recommendations) >= 2 for day in travel_plan_2.itine
 assert travel_plan_2.total_cost == 130
 assert len(offline_weather_models) >= 12
 assert len(offline_feedback_models) >= 3
+assert offline_summary_models == ["gpt-4.1-mini"]
+assert "Yuri and Hiro" in trip_summary
 assert itinerary_revision_agent.trace[-1]["status"] == "completed"
 print("Completed stages passed: revised plan and all eight evaluations.")
 '''))

@@ -126,8 +126,37 @@ The feedback evaluator now reads its final label separately from its analysis an
 
 The existing Windows ZeroMQ fallback warning appeared in the kernel test; the test passed. The helper library remains unchanged.
 
-## Rubric status
+## Status after Stage 6
 
-All six graded criteria are implemented and checked. The full fresh live notebook run, narrative summary, final saved-output review, and submission ZIP are still pending. The recorded local replay does not replace that final live run.
+All six graded criteria are implemented and checked. At this stage, the full fresh live notebook run, narrative summary, final saved-output review, and submission ZIP were still pending. The recorded local replay does not replace that final live run.
 
 Next: run the complete notebook from a fresh kernel, review the result against the rubric, prepare the narrative summary, and package the submission without credentials or the local environment.
+
+## Stage 7 — November 5, 2026
+
+The final submission notebook completed all 31 code cells in order in a fresh local Python 3.12.3 kernel. It used live Vocareum responses with gpt-4.1-mini for planning, weather judgments, revision, and summary text, plus gpt-4.1 for traveler feedback. The saved notebook contains the actual outputs.
+
+| Check | Result |
+| --- | --- |
+| Full live notebook | Passed from a fresh kernel; no saved or mocked replies. |
+| Final cost | 103 / 130 fictional units; daily totals 35, 38, and 30. |
+| Daily activity counts | 2 / 2 / 2. |
+| Revision | Five tool steps; initial evaluation, lookup, calculator, candidate evaluation, final-answer tool. |
+| Independent final evaluation | All eight checks passed, with no failures. |
+| Narrative summary | Generated, displayed, and manually checked against the final source records. |
+| Offline suite in project | 126 passed, including full notebook replay with network access blocked. |
+| Clean extracted ZIP setup | Passed using the included setup script and lockfile. |
+| Offline suite in extracted ZIP | 126 passed, including its own local notebook kernel replay. |
+| Extracted environment and strict completion checks | Passed. |
+| ZIP contents | 44 source, notebook, setup, test, and documentation files; byte comparison passed. |
+| Notebook output review | 31 consecutive execution counts; no error outputs. |
+| Credential and attribution audit | Passed; real key, local environment, development artifacts, and Git history excluded. |
+| Supplied helper | Unchanged from the original download. |
+
+The final run's initial plan already met the two-activity feedback. The revision returned it unchanged after reevaluation. Its decision text sometimes miscounted June 12, while the structured data and tool results remained correct. Two large-plan actions needed the JSON-repair helper before validation and execution. The earlier Stage 6 record still demonstrates a real feedback-driven revision and rejected candidates. Both records are retained.
+
+The first full pass completed the notebook cells but exposed a quoting error in the separate results-export step. Its summary also invented a relationship and used a currency symbol. After correcting the export and strengthening the summary instructions, the complete notebook was rerun. The final summary's facts were reviewed; its requested word range is not enforced by code.
+
+The existing Windows ZeroMQ fallback warning appeared in both offline kernel tests. Both passed. The fresh extracted environment also used uv's normal file-copy fallback when hardlinks were unavailable.
+
+The six graded rubric criteria and the assignment's final-run checks are complete. See [Stage 7](stage-7-submission.md), [final results and trace](examples/final-live-run.json), [final plan](examples/final-plan.json), and [summary](examples/final-trip-summary.md). The ZIP is ready for manual course upload; it has not been submitted.

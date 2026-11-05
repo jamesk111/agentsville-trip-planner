@@ -4,9 +4,9 @@ My project for Udacity's **Prompting for Effective LLM Reasoning and Planning** 
 
 The goal is to generate a trip itinerary, check it, and let a second agent revise it using tools. The destination is fictional. Weather and activity data come from the supplied Python file; model responses come from the Vocareum API.
 
-**Current status:** the core notebook implementation is complete. The saved live revision costs 130 of 130 units, has at least two activities per day, and passed all seven supplied evaluations plus the added schedule check. The final fresh live notebook run, narrative summary, and submission ZIP are still pending.
+**Current status:** complete and ready for submission. The full notebook ran from a fresh local kernel on November 5, 2026. The final plan costs 103 of 130 units, has two activities per day, and passed all eight evaluations. The saved notebook includes the live outputs and trip summary.
 
-The [rubric checklist](docs/rubric-checklist.md) tracks the requirements and the evidence still needed. [Validation notes](docs/validation.md) record what has actually been tested.
+The [rubric checklist](docs/rubric-checklist.md) links each requirement to its evidence. [Validation notes](docs/validation.md) record what has actually been tested.
 
 ## How it works
 
@@ -18,12 +18,13 @@ The notebook follows this sequence:
 4. Check dates, prices, budget, source activity records, interests, and weather.
 5. Give ItineraryRevisionAgent the plan and traveler feedback. It can calculate costs, look up activities, run evaluations, and return a final plan.
 6. Check the revised plan again and display it.
+7. Generate a short text summary from the checked plan.
 
 The revision agent uses a ReAct loop: the model chooses an action, Python runs the tool, and the result goes back to the model as an observation. The notebook caps the full revision run at 15 steps. Python checks evaluation order and returns only the candidate that passed the final evaluation.
 
 Pydantic checks the shape and types of the data. Separate evaluations check the trip itself. Passing one does not guarantee passing the other.
 
-The code stays in the course notebook for now. Setup and tests live alongside it. Decisions and tradeoffs are in [ADR 0001: local setup](docs/adr/0001-local-notebook-setup.md), [ADR 0002: trip validation](docs/adr/0002-trip-validation.md), [ADR 0003: initial planner](docs/adr/0003-initial-planner-prompt.md), [ADR 0004: weather evaluation](docs/adr/0004-weather-evaluation.md), and [ADR 0005: revision loop](docs/adr/0005-revision-loop.md).
+The code stays in the course notebook for now. Setup and tests live alongside it. Decisions and tradeoffs are in [ADR 0001: local setup](docs/adr/0001-local-notebook-setup.md), [ADR 0002: trip validation](docs/adr/0002-trip-validation.md), [ADR 0003: initial planner](docs/adr/0003-initial-planner-prompt.md), [ADR 0004: weather evaluation](docs/adr/0004-weather-evaluation.md), [ADR 0005: revision loop](docs/adr/0005-revision-loop.md), and [ADR 0006: trip summary](docs/adr/0006-trip-summary.md).
 
 ## Files
 
@@ -58,6 +59,8 @@ cd agentsville-trip-planner
 bash scripts/setup.sh
 ~~~
 
+If using the submission ZIP, extract it into one folder, open Git Bash there, and run bash scripts/setup.sh. The ZIP contains the same setup and test files.
+
 The script runs uv sync --locked, registers the **Python (AgentsVille Trip Planner)** kernel in .venv, and creates .env from .env.example if it does not already exist. It leaves an existing .env alone. No global Python environment or global Jupyter kernel is changed.
 
 The six course libraries keep their supplied versions. The lockfile also records JupyterLab, the kernel, and test dependencies. Use the locked commands below so the notebook and tests use the same environment.
@@ -88,13 +91,13 @@ uv run --locked python scripts/check_environment.py
 uv run --locked jupyter lab
 ~~~
 
-Open project_starter.ipynb and select **Python (AgentsVille Trip Planner)**. Run cells in order. Cells 1–38 are implemented. Cell 16 generates the initial plan; cell 35 previews a revision message; cell 36 runs the revision loop; cell 37 checks the returned plan. Weather and feedback checks also make API requests, so rerunning every cell repeats those requests. The [Stage 6 walkthrough](docs/stage-6-itinerary-revision.md) explains the saved result and trace. A fresh full live run is the final verification step.
+Open project_starter.ipynb and select **Python (AgentsVille Trip Planner)**. Run cells in order. The full notebook is implemented. Cell 16 generates the initial plan; cell 35 previews a revision message; cell 36 runs the revision loop; cell 37 checks the returned plan. Weather and feedback checks also make API requests, so rerunning every cell repeats those requests. The [Stage 6 walkthrough](docs/stage-6-itinerary-revision.md) explains the earlier feedback-correction example. [Stage 7](docs/stage-7-submission.md) records the final complete run. Cell 40 generates the text summary after the final checks pass.
 
 The sample trip is June 10–12, 2025, including both endpoints, with a budget of 130 fictional units. Keep those dates while building the project. The supplied data only covers June 10–15, 2025; changing to today's dates returns no activities or weather.
 
 The starter cost calculation adds each selected activity's price once. It does not multiply that price by the number of travelers.
 
-Optional narration is off by default. After the itinerary works, set RUN_NARRATION to True to run the demonstration. It makes extra API requests and saves audio under artifacts/, which is ignored by Git.
+The final summary makes one additional text request. It uses the evaluated plan and appears in the notebook. Audio is optional in the assignment and is not generated by this version.
 
 ## Check and test
 
@@ -104,7 +107,7 @@ uv run --locked python scripts/check_environment.py
 uv run --locked python scripts/check_project.py
 ~~~
 
-The offline tests use fake keys and mocked responses. The notebook test replays cells 1–38 in a real local kernel with the saved initial plan, recorded revision responses, and mocked weather/feedback judgments; outbound connections are blocked. Other tests cover input failures, source data, prompt context, response parsing, and replay of recorded live results. The offline suite sends no model requests.
+The offline tests use fake keys and mocked responses. The notebook test replays the full notebook in a real local kernel with the saved initial plan, recorded revision responses, and mocked weather/feedback judgments and summary text; outbound connections are blocked. Other tests cover input failures, source data, prompt context, response parsing, and replay of recorded live results. The offline suite sends no model requests.
 
 After configuring a key, this optional check reads the provider's model list without generating text:
 
@@ -120,7 +123,7 @@ Before submission, this command must also pass:
 uv run --locked python scripts/check_project.py --require-complete
 ~~~
 
-It now passes because all TODOs are filled. This scan checks syntax and unfinished markers; the live evaluations and recorded trace provide separate evidence for the behavior. A fresh complete live notebook run and final submission review are still required. Record that evidence in docs/validation.md.
+It now passes because all TODOs are filled. This scan checks syntax and unfinished markers; the live evaluations and recorded trace provide separate evidence for the behavior. The final live run is recorded in [Stage 7](docs/stage-7-submission.md), including the output review and packaging checks.
 
 ## Shutdown
 
@@ -139,13 +142,13 @@ Save the notebook, then use **Kernel > Shut Down All Kernels** in JupyterLab. St
 | No weather or activities | Use AgentsVille and dates within June 10–15, 2025. |
 | Model-list check fails | The provider may block that endpoint. The check reports failure; it does not substitute a different model or claim generation works. |
 | Revision loop reaches its step limit | Inspect the last tool call and observation. Fix the prompt or failing tool before increasing the limit. |
-| Audio is missing | Narration is optional. The supplied helper suppresses audio exceptions, so check the text result and artifacts/ separately. |
+| Summary is empty or inaccurate | The final cell rejects empty text. Review the generated text against the final table; the checked itinerary is the source for activity details and cost. |
 
 ## Submission
 
-The course asks for a ZIP of the code files. When the project is complete, include the notebook and its supporting Python/configuration files. Include local_setup.py because the setup cell imports it. Exclude .env, .venv, caches, logs, and generated audio. Review saved notebook outputs before publishing or submitting.
+The submission is agentsville-trip-planner-submission.zip. It contains the executed notebook, supplied helper, local configuration helper, locked environment files, setup/check scripts, tests, and documentation. The .env.example file is a template; the real .env, .venv, caches, logs, and development artifacts are excluded.
 
-The GitHub repository is the project history. The course ZIP is a separate deliverable, prepared after the rubric checklist is complete.
+The notebook imports local_setup.py, so keep the files together when extracting the ZIP. Follow the setup instructions above to run it. The [Stage 7 notes](docs/stage-7-submission.md) describe the final review. The ZIP is prepared for manual upload to the course submission page; the GitHub repository retains the project history.
 
 ## Course sources
 
