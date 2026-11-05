@@ -1,0 +1,651 @@
+{
+  "date": "2026-11-05",
+  "requested_model": "gpt-4.1-mini",
+  "requests": 21,
+  "probe_results": [
+    {
+      "id": "indoor-storm",
+      "activity_id": "event-2025-06-12-3",
+      "weather": "thunderstorm",
+      "expected": "IS_COMPATIBLE",
+      "activity": {
+        "activity_id": "event-2025-06-12-3",
+        "name": "Tech & Film Fusion Night",
+        "start_time": "2025-06-12 19:00",
+        "end_time": "2025-06-12 21:30",
+        "location": "Virtual Reality Theater, Silicon Plaza, AgentsVille",
+        "description": "Dive into an immersive evening where the magic of movies meets the latest in technology! Join fellow movie buffs and tech enthusiasts for a special screening of cutting-edge sci-fi short films, followed by an interactive panel with local filmmakers and VR technologists. Experience the future of entertainment and discuss how technology is transforming the world of cinema. This exciting, indoor event at the Virtual Reality Theater is perfect for anyone interested in technology and movies.",
+        "price": 15,
+        "related_interests": [
+          "technology",
+          "movies"
+        ]
+      },
+      "response": "REASONING:\nThe event is explicitly described as an indoor activity held at the Virtual Reality Theater, thus it is suitable for a thunderstorm.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "actual": "IS_COMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 37,
+          "prompt_tokens": 571,
+          "total_tokens": 608,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "outdoor-rain",
+      "activity_id": "event-2025-06-13-2",
+      "weather": "rainy",
+      "expected": "IS_INCOMPATIBLE",
+      "activity": {
+        "activity_id": "event-2025-06-13-2",
+        "name": "Art & Lens: Outdoor Creative Walk",
+        "start_time": "2025-06-13 15:00",
+        "end_time": "2025-06-13 17:00",
+        "location": "Sunset Promenade Art Park, AgentsVille",
+        "description": "Join us for 'Art & Lens: Outdoor Creative Walk', where art lovers and photography enthusiasts unite! Explore the vibrant scenery of Sunset Promenade Art Park in AgentsVille, capturing inspiring moments and sketching as you go. Bring your camera, sketchbook, or both, and enjoy a guided creative journey with plenty of opportunities to connect, learn, and create. This engaging event is held entirely outdoors and is perfect for anyone passionate about art and photography.",
+        "price": 15,
+        "related_interests": [
+          "art",
+          "photography"
+        ]
+      },
+      "response": "REASONING:\nThe activity is held entirely outdoors and does not mention any indoor backup; rain would negatively impact outdoor walking and creative activities.\nFINAL ANSWER:\nIS_INCOMPATIBLE",
+      "actual": "IS_INCOMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 37,
+          "prompt_tokens": 578,
+          "total_tokens": 615,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "outdoor-storm",
+      "activity_id": "event-2025-06-12-2",
+      "weather": "thunderstorm",
+      "expected": "IS_INCOMPATIBLE",
+      "activity": {
+        "activity_id": "event-2025-06-12-2",
+        "name": "Trail Tales: Writing & Hiking Adventure",
+        "start_time": "2025-06-12 14:00",
+        "end_time": "2025-06-12 16:30",
+        "location": "Whispering Pines Trailhead, AgentsVille",
+        "description": "Embark on an outdoor writing journey with fellow enthusiasts on the scenic trails of AgentsVille! Trail Tales is a unique event that combines hiking through beautiful pine forests and creative writing activities inspired by nature. Whether you love writing poetry, stories, or journal entries, this event is perfect for those who enjoy both writing and hiking. You'll have guided prompts, collaborative exercises, and plenty of fresh air. Suitable for writers of all levels who want to fuel their creativity while exploring the outdoors.",
+        "price": 20,
+        "related_interests": [
+          "writing",
+          "hiking"
+        ]
+      },
+      "response": "REASONING:\nThe activity involves hiking outdoors through pine forests during a thunderstorm, with no mention of indoor backup or shelter.\nFINAL ANSWER:\nIS_INCOMPATIBLE",
+      "actual": "IS_INCOMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 35,
+          "prompt_tokens": 584,
+          "total_tokens": 619,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "indoor-backup-storm",
+      "activity_id": "event-2025-06-12-1",
+      "weather": "thunderstorm",
+      "expected": "IS_COMPATIBLE",
+      "activity": {
+        "activity_id": "event-2025-06-12-1",
+        "name": "Soundtrack Picnic: Lunchtime Movies & Melodies",
+        "start_time": "2025-06-12 12:00",
+        "end_time": "2025-06-12 13:30",
+        "location": "Starlight Amphitheater, AgentsVille",
+        "description": "Experience the magic of classic movie scenes paired with live music at the outdoor Starlight Amphitheater! Bring your lunch and relax on the lawn as musicians perform iconic film soundtracks while selected clips light up our open-air screen. Perfect for movie buffs and music lovers alike, this engaging event celebrates both arts in a sunny lunchtime setting. In case of rain, the event will move indoors to the adjacent Harmony Hall. Come for the tunes, stay for the cinematic wonder!",
+        "price": 15,
+        "related_interests": [
+          "movies",
+          "music"
+        ]
+      },
+      "response": "REASONING:\nThe event is outdoors but explicitly states it will move indoors to an adjacent hall in case of rain or thunderstorms.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "actual": "IS_COMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 34,
+          "prompt_tokens": 586,
+          "total_tokens": 620,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "outdoor-clear",
+      "activity_id": "event-2025-06-10-1",
+      "weather": "clear",
+      "expected": "IS_COMPATIBLE",
+      "activity": {
+        "activity_id": "event-2025-06-10-1",
+        "name": "Serve & Savor: Tennis and Taste Luncheon",
+        "start_time": "2025-06-10 12:00",
+        "end_time": "2025-06-10 13:30",
+        "location": "The Grand Racquet Terrace, AgentsVille",
+        "description": "Join us for 'Serve & Savor,' the ultimate crossover event for cooking and tennis enthusiasts in AgentsVille! Kick off your lunch hour with a friendly round of doubles on our outdoor courts, then unwind with a hands-on cooking workshop led by a local chef, where you'll prepare and enjoy delicious energy-boosting recipes. Whether you come for the sport or the flavors, this energizing luncheon celebrates both passions in a lively outdoor setting. Ideal for anyone who loves to play, cook, or simply savor fresh food and fun!",
+        "price": 20,
+        "related_interests": [
+          "cooking",
+          "tennis"
+        ]
+      },
+      "response": "REASONING:\nThe activity begins with outdoor tennis on the courts, which is compatible with clear weather. The cooking workshop is indoors, providing an indoor component. Clear weather suits the outdoor tennis without issues.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "actual": "IS_COMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 49,
+          "prompt_tokens": 596,
+          "total_tokens": 645,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "unknown-setting",
+      "activity": {
+        "name": "Book discussion",
+        "description": "A group discusses a book. The venue and setting are not specified."
+      },
+      "weather": "rainy",
+      "expected": "IS_COMPATIBLE",
+      "response": "REASONING:\nThe venue and setting are not specified, so we assume compatibility as per the instructions.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "actual": "IS_COMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 29,
+          "prompt_tokens": 497,
+          "total_tokens": 526,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "unknown-weather",
+      "activity_id": "event-2025-06-12-2",
+      "weather": "not provided",
+      "expected": "IS_COMPATIBLE",
+      "activity": {
+        "activity_id": "event-2025-06-12-2",
+        "name": "Trail Tales: Writing & Hiking Adventure",
+        "start_time": "2025-06-12 14:00",
+        "end_time": "2025-06-12 16:30",
+        "location": "Whispering Pines Trailhead, AgentsVille",
+        "description": "Embark on an outdoor writing journey with fellow enthusiasts on the scenic trails of AgentsVille! Trail Tales is a unique event that combines hiking through beautiful pine forests and creative writing activities inspired by nature. Whether you love writing poetry, stories, or journal entries, this event is perfect for those who enjoy both writing and hiking. You'll have guided prompts, collaborative exercises, and plenty of fresh air. Suitable for writers of all levels who want to fuel their creativity while exploring the outdoors.",
+        "price": 20,
+        "related_interests": [
+          "writing",
+          "hiking"
+        ]
+      },
+      "response": "REASONING:\nThe activity involves hiking outdoors but there is no information about indoor backup or shelter in case of rain or bad weather. However, the weather condition is not provided, so the insufficient-information rule applies.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "actual": "IS_COMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 51,
+          "prompt_tokens": 584,
+          "total_tokens": 635,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "open-canopy-storm",
+      "activity": {
+        "name": "Park music session",
+        "description": "An outdoor concert under an open-sided canopy. There is no indoor venue or indoor backup."
+      },
+      "weather": "thunderstorm",
+      "expected": "IS_INCOMPATIBLE",
+      "response": "REASONING:\nThe concert is outdoors under an open-sided canopy without an indoor backup, and thunderstorms are unsafe and incompatible with this setting.\nFINAL ANSWER:\nIS_INCOMPATIBLE",
+      "actual": "IS_INCOMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 37,
+          "prompt_tokens": 503,
+          "total_tokens": 540,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "id": "outdoor-rain-backup",
+      "activity": {
+        "name": "Courtyard craft class",
+        "description": "An outdoor craft class that moves to an open-air veranda if it rains. There is no indoor space."
+      },
+      "weather": "rainy",
+      "expected": "IS_INCOMPATIBLE",
+      "response": "REASONING:\nThe craft class is outdoors and moves to an open-air veranda during rain, which is not an indoor space and does not provide shelter from the rain.\nFINAL ANSWER:\nIS_INCOMPATIBLE",
+      "actual": "IS_INCOMPATIBLE",
+      "passed": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 43,
+          "prompt_tokens": 506,
+          "total_tokens": 549,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    }
+  ],
+  "saved_plan_evaluations": {
+    "success": true,
+    "failures": [],
+    "eval_functions": [
+      "eval_start_end_dates_match",
+      "eval_total_cost_is_accurate",
+      "eval_itinerary_events_match_actual_events",
+      "eval_itinerary_satisfies_interests",
+      "eval_total_cost_is_within_budget",
+      "eval_activities_and_weather_are_compatible"
+    ]
+  },
+  "saved_plan_weather_responses": [
+    {
+      "input": "Activity: FutureTech Breakfast Meet-Up\nDescription: Join fellow technology enthusiasts for a dynamic morning at the FutureTech Breakfast Meet-Up! Dive into the latest trends in tech, gadget demos, and networking opportunities over coffee and fresh pastries. Held indoors at the spacious Innovation Atrium, this event is perfect for tech lovers eager to exchange ideas and discover new possibilities in a comfortable, modern setting.\nWeather Condition: clear",
+      "response": "REASONING:\nThe event is held indoors at the Innovation Atrium, making it suitable regardless of outdoor weather, and the current weather is clear.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 38,
+          "prompt_tokens": 553,
+          "total_tokens": 591,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Serve & Savor: Tennis and Taste Luncheon\nDescription: Join us for 'Serve & Savor,' the ultimate crossover event for cooking and tennis enthusiasts in AgentsVille! Kick off your lunch hour with a friendly round of doubles on our outdoor courts, then unwind with a hands-on cooking workshop led by a local chef, where you'll prepare and enjoy delicious energy-boosting recipes. Whether you come for the sport or the flavors, this energizing luncheon celebrates both passions in a lively outdoor setting. Ideal for anyone who loves to play, cook, or simply savor fresh food and fun!\nWeather Condition: clear",
+      "response": "REASONING:\nThe activity includes an outdoor tennis game followed by a cooking workshop. The tennis is outdoors, but the weather is clear, which is suitable for outdoor activities. The workshop is likely indoors or under shelter, but this is not explicitly stated. However, clear weather means tennis outdoors is compatible.\n\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 69,
+          "prompt_tokens": 596,
+          "total_tokens": 665,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: AgentsVille Twilight Writing Escape\nDescription: Join fellow writers for an inspiring evening at The Ink Loft, where words flow as freely as the coffee! This writing-themed event welcomes all—novelists, poets, bloggers, or anyone with a passion for storytelling. Set indoors in AgentsVille's coziest lounge, enjoy writing games, group prompts, and opportunities to read your work aloud. Connect, create, and celebrate the art of writing in this creative indoor haven.\nWeather Condition: clear",
+      "response": "REASONING:\nThe event is explicitly indoors, so weather conditions like rain or storms do not affect it. Clear weather poses no issues for an indoor writing event.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 41,
+          "prompt_tokens": 572,
+          "total_tokens": 613,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Tech Lunch & Learn: AI Frontiers\nDescription: Join fellow tech enthusiasts for a dynamic lunchtime event exploring the future of artificial intelligence! Held indoors at The Digital Atrium, this Tech Lunch & Learn features engaging lightning talks, interactive demos, and networking opportunities all centered around technology and innovation. Enjoy light lunch fare as you connect with others passionate about technology, AI, and the digital world. Whether you're a seasoned developer or just curious about tech, this event is for you! Related interests: technology, music (sound tech demos), photography (AI imaging), writing (AI creativity).\nWeather Condition: partly cloudy",
+      "response": "REASONING:\nThe event is held indoors at The Digital Atrium, so weather conditions such as being partly cloudy have no impact on it.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 37,
+          "prompt_tokens": 595,
+          "total_tokens": 632,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Palette & Palate: Art Meets Cooking Experience\nDescription: Immerse yourself in a colorful evening where art and cooking blend together! At 'Palette & Palate,' participants will begin indoors at The Creative Canvas Studio with a guided session to paint their own culinary-inspired masterpiece. Afterwards, a local chef will lead an interactive cooking class, teaching you how to craft vibrant, edible works of art. Whether you're an art enthusiast, a food lover, or both, this creative night is perfect for socializing and expressing yourself through color and flavor! All materials and ingredients are provided. This event is held indoors and welcomes all experience levels in art and cooking.\nWeather Condition: partly cloudy",
+      "response": "REASONING:\nThe entire activity takes place indoors, so partly cloudy weather does not affect it.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 28,
+          "prompt_tokens": 608,
+          "total_tokens": 636,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Tech & Film Fusion Night\nDescription: Dive into an immersive evening where the magic of movies meets the latest in technology! Join fellow movie buffs and tech enthusiasts for a special screening of cutting-edge sci-fi short films, followed by an interactive panel with local filmmakers and VR technologists. Experience the future of entertainment and discuss how technology is transforming the world of cinema. This exciting, indoor event at the Virtual Reality Theater is perfect for anyone interested in technology and movies.\nWeather Condition: thunderstorm",
+      "response": "REASONING:\nThe event takes place indoors at the Virtual Reality Theater, so it is not affected by the thunderstorm.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 33,
+          "prompt_tokens": 571,
+          "total_tokens": 604,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    }
+  ],
+  "negative_plan_evaluations": {
+    "success": false,
+    "failures": [
+      "Activities that may be ruined by inclement weather: ['Trail Tales: Writing & Hiking Adventure']"
+    ],
+    "eval_functions": [
+      "eval_start_end_dates_match",
+      "eval_total_cost_is_accurate",
+      "eval_itinerary_events_match_actual_events",
+      "eval_itinerary_satisfies_interests",
+      "eval_total_cost_is_within_budget",
+      "eval_activities_and_weather_are_compatible"
+    ]
+  },
+  "negative_plan_weather_responses": [
+    {
+      "input": "Activity: FutureTech Breakfast Meet-Up\nDescription: Join fellow technology enthusiasts for a dynamic morning at the FutureTech Breakfast Meet-Up! Dive into the latest trends in tech, gadget demos, and networking opportunities over coffee and fresh pastries. Held indoors at the spacious Innovation Atrium, this event is perfect for tech lovers eager to exchange ideas and discover new possibilities in a comfortable, modern setting.\nWeather Condition: clear",
+      "response": "REASONING:\nThe event is held indoors in the Innovation Atrium, so weather conditions like rain or thunderstorms would not affect it. Clear weather is compatible but irrelevant to the indoor setting.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 46,
+          "prompt_tokens": 553,
+          "total_tokens": 599,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Serve & Savor: Tennis and Taste Luncheon\nDescription: Join us for 'Serve & Savor,' the ultimate crossover event for cooking and tennis enthusiasts in AgentsVille! Kick off your lunch hour with a friendly round of doubles on our outdoor courts, then unwind with a hands-on cooking workshop led by a local chef, where you'll prepare and enjoy delicious energy-boosting recipes. Whether you come for the sport or the flavors, this energizing luncheon celebrates both passions in a lively outdoor setting. Ideal for anyone who loves to play, cook, or simply savor fresh food and fun!\nWeather Condition: clear",
+      "response": "REASONING:\nThe activity begins outdoors with tennis on outdoor courts, followed by a cooking workshop, which is likely indoors. The weather is clear, which is suitable for outdoor tennis.\n\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 45,
+          "prompt_tokens": 596,
+          "total_tokens": 641,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: AgentsVille Twilight Writing Escape\nDescription: Join fellow writers for an inspiring evening at The Ink Loft, where words flow as freely as the coffee! This writing-themed event welcomes all—novelists, poets, bloggers, or anyone with a passion for storytelling. Set indoors in AgentsVille's coziest lounge, enjoy writing games, group prompts, and opportunities to read your work aloud. Connect, create, and celebrate the art of writing in this creative indoor haven.\nWeather Condition: clear",
+      "response": "REASONING:\nThe event takes place indoors, so it is unaffected by outdoor weather conditions such as clear weather.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 31,
+          "prompt_tokens": 572,
+          "total_tokens": 603,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Tech Lunch & Learn: AI Frontiers\nDescription: Join fellow tech enthusiasts for a dynamic lunchtime event exploring the future of artificial intelligence! Held indoors at The Digital Atrium, this Tech Lunch & Learn features engaging lightning talks, interactive demos, and networking opportunities all centered around technology and innovation. Enjoy light lunch fare as you connect with others passionate about technology, AI, and the digital world. Whether you're a seasoned developer or just curious about tech, this event is for you! Related interests: technology, music (sound tech demos), photography (AI imaging), writing (AI creativity).\nWeather Condition: partly cloudy",
+      "response": "REASONING:\nThe event is explicitly described as being held indoors at The Digital Atrium, which protects it from any weather issues, including rain or thunderstorms. The current weather of partly cloudy is mild and poses no obstacle to an indoor activity.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 57,
+          "prompt_tokens": 595,
+          "total_tokens": 652,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Palette & Palate: Art Meets Cooking Experience\nDescription: Immerse yourself in a colorful evening where art and cooking blend together! At 'Palette & Palate,' participants will begin indoors at The Creative Canvas Studio with a guided session to paint their own culinary-inspired masterpiece. Afterwards, a local chef will lead an interactive cooking class, teaching you how to craft vibrant, edible works of art. Whether you're an art enthusiast, a food lover, or both, this creative night is perfect for socializing and expressing yourself through color and flavor! All materials and ingredients are provided. This event is held indoors and welcomes all experience levels in art and cooking.\nWeather Condition: partly cloudy",
+      "response": "REASONING:\nThe entire event takes place indoors at a studio, making it unaffected by the weather conditions described as partly cloudy.\nFINAL ANSWER:\nIS_COMPATIBLE",
+      "compatible": true,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 34,
+          "prompt_tokens": 608,
+          "total_tokens": 642,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    },
+    {
+      "input": "Activity: Trail Tales: Writing & Hiking Adventure\nDescription: Embark on an outdoor writing journey with fellow enthusiasts on the scenic trails of AgentsVille! Trail Tales is a unique event that combines hiking through beautiful pine forests and creative writing activities inspired by nature. Whether you love writing poetry, stories, or journal entries, this event is perfect for those who enjoy both writing and hiking. You'll have guided prompts, collaborative exercises, and plenty of fresh air. Suitable for writers of all levels who want to fuel their creativity while exploring the outdoors.\nWeather Condition: thunderstorm",
+      "response": "REASONING:\nThe activity is an outdoor hike combined with writing with no mention of an indoor backup, and the weather condition is a thunderstorm.\nFINAL ANSWER:\nIS_INCOMPATIBLE",
+      "compatible": false,
+      "request": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "usage": {
+          "completion_tokens": 39,
+          "prompt_tokens": 584,
+          "total_tokens": 623,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": 0,
+            "audio_tokens": 0,
+            "reasoning_tokens": 0,
+            "rejected_prediction_tokens": 0
+          },
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0
+          }
+        }
+      }
+    }
+  ],
+  "negative_plan_total_cost": 120,
+  "provider_change": {
+    "original_model": "gpt-4.1-nano",
+    "status": 404,
+    "error_code": "model_not_found",
+    "provider_message": "The model gpt-4.1-nano has been deprecated.",
+    "replacement_model": "gpt-4.1-mini"
+  }
+}

@@ -2,7 +2,7 @@
 
 Source: [Udacity project rubric](https://learn.udacity.com/cd14526?version=1.1.28&lessonKey=39b0a6da-dfbf-4314-ac52-1301c532334b&project=rubric), reviewed November 2, 2026. Requirements below are paraphrased. Cell numbers count all cells from 1, not execution counts.
 
-**Status after Stage 4:** R1, R5, and R6 are complete. R2, R3, and R4 are pending. Completed items have implementation and test results recorded below; setup checks alone do not complete the rubric.
+**Status after Stage 5:** R1, R2, R5, and R6 are complete. R3 and R4 are pending. Completed items have implementation and test results recorded below; setup checks alone do not complete the rubric.
 
 ## General prompt design
 
@@ -17,11 +17,11 @@ Verified November 5, 2026. The prompt in cell 15 includes the role, planning seq
 
 ### R2. Weather compatibility prompt — cell 23
 
-- [ ] Define the evaluator's role and task.
-- [ ] Specify the exact expected output format.
-- [ ] Include relevant examples for compatible and incompatible activities.
+- [x] Define the evaluator's role and task.
+- [x] Specify the exact expected output format.
+- [x] Include relevant examples for compatible and incompatible activities.
 
-Evidence needed: final prompt and tests covering an indoor activity, outdoor activity in bad weather, and an explicit indoor backup. Follow the assignment's instruction to assume compatibility when evidence is insufficient. Check the model's final verdict rather than treating its explanation as proof.
+Verified November 5, 2026. The prompt includes four examples and the assignment's insufficient-information rule. Nine live judgment cases passed. The saved itinerary passed all six current evaluations; an outdoor hike substituted on the storm day was rejected. [Weather tests](../tests/test_weather_evaluator.py) cover final-verdict parsing and evaluation behavior. See the [walkthrough](stage-5-weather-evaluation.md) and [recorded responses](examples/weather-evaluation-checks.json). Vocareum rejected the starter nano model, so this evaluator uses the working course mini model; see [ADR 0004](adr/0004-weather-evaluation.md).
 
 ## Agent reasoning and tool use
 
@@ -67,7 +67,8 @@ These checks supplement the six graded criteria. They do not replace them. The i
 - [x] Download and inspect the official starter files.
 - [x] Configure a local environment and keep credentials outside the notebook.
 - [x] Verify planner inference through Vocareum with gpt-4.1-mini.
-- [ ] Verify inference with the weather and traveler-feedback models.
+- [x] Verify weather inference through Vocareum with gpt-4.1-mini.
+- [ ] Verify inference with the traveler-feedback model.
 - [x] Generate the initial TravelPlan and inspect the source-data matches.
 - [ ] Keep the city and dates correct; include each trip day.
 - [ ] Keep activity details unchanged from the supplied records.

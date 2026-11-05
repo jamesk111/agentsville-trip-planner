@@ -1,0 +1,65 @@
+[
+  {
+    "id": "indoor-storm",
+    "activity_id": "event-2025-06-12-3",
+    "weather": "thunderstorm",
+    "expected": "IS_COMPATIBLE"
+  },
+  {
+    "id": "outdoor-rain",
+    "activity_id": "event-2025-06-13-2",
+    "weather": "rainy",
+    "expected": "IS_INCOMPATIBLE"
+  },
+  {
+    "id": "outdoor-storm",
+    "activity_id": "event-2025-06-12-2",
+    "weather": "thunderstorm",
+    "expected": "IS_INCOMPATIBLE"
+  },
+  {
+    "id": "indoor-backup-storm",
+    "activity_id": "event-2025-06-12-1",
+    "weather": "thunderstorm",
+    "expected": "IS_COMPATIBLE"
+  },
+  {
+    "id": "outdoor-clear",
+    "activity_id": "event-2025-06-10-1",
+    "weather": "clear",
+    "expected": "IS_COMPATIBLE"
+  },
+  {
+    "id": "unknown-setting",
+    "activity": {
+      "name": "Book discussion",
+      "description": "A group discusses a book. The venue and setting are not specified."
+    },
+    "weather": "rainy",
+    "expected": "IS_COMPATIBLE"
+  },
+  {
+    "id": "unknown-weather",
+    "activity_id": "event-2025-06-12-2",
+    "weather": "not provided",
+    "expected": "IS_COMPATIBLE"
+  },
+  {
+    "id": "open-canopy-storm",
+    "activity": {
+      "name": "Park music session",
+      "description": "An outdoor concert under an open-sided canopy. There is no indoor venue or indoor backup."
+    },
+    "weather": "thunderstorm",
+    "expected": "IS_INCOMPATIBLE"
+  },
+  {
+    "id": "outdoor-rain-backup",
+    "activity": {
+      "name": "Courtyard craft class",
+      "description": "An outdoor craft class that moves to an open-air veranda if it rains. There is no indoor space."
+    },
+    "weather": "rainy",
+    "expected": "IS_INCOMPATIBLE"
+  }
+]

@@ -4,7 +4,7 @@ My project for Udacity's **Prompting for Effective LLM Reasoning and Planning** 
 
 The goal is to generate a trip itinerary, check it, and let a second agent revise it using tools. The destination is fictional. Weather and activity data come from the supplied Python file; model responses come from the Vocareum API.
 
-**Current status:** the initial planner is working through Vocareum. The saved sample itinerary costs 115 of the 130-unit budget, and the final prompt passed three live checks. The weather-evaluation prompt, tool description, and revision prompt are still unfinished, so the notebook will not run end to end yet.
+**Current status:** the planner and weather evaluator are working through Vocareum. The saved 115-unit itinerary passed the six evaluations currently implemented. The activity-tool description and revision prompt are still unfinished, so the notebook will not run end to end yet.
 
 The [rubric checklist](docs/rubric-checklist.md) tracks the requirements and the evidence still needed. [Validation notes](docs/validation.md) record what has actually been tested.
 
@@ -23,7 +23,7 @@ The revision agent uses a ReAct loop: the model chooses an action, Python runs t
 
 Pydantic checks the shape and types of the data. Separate evaluations check the trip itself. Passing one does not guarantee passing the other.
 
-The code stays in the course notebook for now. Setup and tests live alongside it. Decisions and tradeoffs are in [ADR 0001: local setup](docs/adr/0001-local-notebook-setup.md), [ADR 0002: trip validation](docs/adr/0002-trip-validation.md), and [ADR 0003: initial planner](docs/adr/0003-initial-planner-prompt.md).
+The code stays in the course notebook for now. Setup and tests live alongside it. Decisions and tradeoffs are in [ADR 0001: local setup](docs/adr/0001-local-notebook-setup.md), [ADR 0002: trip validation](docs/adr/0002-trip-validation.md), [ADR 0003: initial planner](docs/adr/0003-initial-planner-prompt.md), and [ADR 0004: weather evaluation](docs/adr/0004-weather-evaluation.md).
 
 ## Files
 
@@ -75,7 +75,7 @@ Enter the real key only in .env. That file is ignored by Git. Do not put a key i
 
 For a personal OpenAI key, set OPENAI_BASE_URL to https://api.openai.com/v1. Vocareum keys must use the Vocareum URL. The configuration helper catches that mismatch before sending a request.
 
-The course notebook uses gpt-4.1-mini for planning, gpt-4.1-nano for weather judgments, and gpt-4.1 for traveler-feedback judgments. These model choices remain as supplied. Course access and budget need to be available before running those cells.
+The notebook uses gpt-4.1-mini for planning and weather judgments, and gpt-4.1 for traveler-feedback judgments. The starter's weather model, gpt-4.1-nano, was rejected by Vocareum as deprecated. [ADR 0004](docs/adr/0004-weather-evaluation.md) records the replacement. Course access and budget need to be available before running those cells.
 
 The client has a 60-second request timeout and one retry. Creating it does not send a request. See the [OpenAI Python SDK documentation](https://developers.openai.com/api/reference/python) for the environment-variable configuration pattern; this project keeps the course's pinned SDK version.
 
@@ -88,7 +88,7 @@ uv run --locked python scripts/check_environment.py
 uv run --locked jupyter lab
 ~~~
 
-Open project_starter.ipynb and select **Python (AgentsVille Trip Planner)**. Run cells in order. At the current stage, cells 1–22 are ready. Cell 16 makes a model request; the following completed cells run the Python evaluations. Stop before cell 23, which contains the unfinished weather prompt. See the [Stage 3 input walkthrough](docs/stage-3-trip-inputs.md) and [Stage 4 planner results](docs/stage-4-initial-planner.md).
+Open project_starter.ipynb and select **Python (AgentsVille Trip Planner)**. Run cells in order. At the current stage, cells 1–24 are ready. Cell 16 makes the planner request. Cells 23 and 24 each make one weather-model request per selected activity. See the [Stage 3 inputs](docs/stage-3-trip-inputs.md), [Stage 4 planner results](docs/stage-4-initial-planner.md), and [Stage 5 weather checks](docs/stage-5-weather-evaluation.md). The activity-tool description in cell 28 and revision prompt in cell 35 are unfinished.
 
 The sample trip is June 10–12, 2025, including both endpoints, with a budget of 130 fictional units. Keep those dates while building the project. The supplied data only covers June 10–15, 2025; changing to today's dates returns no activities or weather.
 
@@ -104,7 +104,7 @@ uv run --locked python scripts/check_environment.py
 uv run --locked python scripts/check_project.py
 ~~~
 
-The tests use fake keys and a mocked API response. The notebook input-stage test runs cells 1–12 in a real local kernel with outbound connections blocked inside the test cells. Model and lookup tests also cover invalid inputs and missing data. Planner tests also check the embedded schema/context, reject malformed responses, and replay the saved live sample. The offline suite sends no model requests.
+The offline tests use fake keys and mocked responses. The notebook test runs cells 1–24 in a real local kernel with the saved planner output and mocked weather judgments; outbound connections are blocked. Other tests cover input failures, source data, prompt context, response parsing, and replay of recorded live results. The offline suite sends no model requests.
 
 After configuring a key, this optional check reads the provider's model list without generating text:
 

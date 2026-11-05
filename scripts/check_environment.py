@@ -52,13 +52,13 @@ def main() -> int:
             print(f"FAIL: provider connection or configuration ({type(error).__name__}). "
                   "Check .env, key activation, network access, and course budget.")
             return 1
-        required = {"gpt-4.1", "gpt-4.1-mini", "gpt-4.1-nano"}
+        required = {"gpt-4.1", "gpt-4.1-mini"}
         missing = required - listed
         if missing:
             print("UNVERIFIED: the provider did not list: " + ", ".join(sorted(missing)))
             print("Model listing is not proof of inference access; verify during the model-running stage.")
             return 1
-        print("PASS: provider model list includes all three course models; no generation requested.")
+        print("PASS: provider model list includes both currently configured course models; no generation requested.")
         print("Inference permissions, available budget, and generation behavior remain unverified.")
     else:
         print("SKIPPED: provider connectivity; use --check-api after configuring .env.")

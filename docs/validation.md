@@ -75,8 +75,30 @@ The sample's June 12 activity is indoors. The repeat and one-day cases also use 
 
 The existing Windows ZeroMQ fallback warning appeared in the offline kernel test; the test passed.
 
+## Stage 5 — November 5, 2026
+
+Completed the weather prompt in cell 23, with explicit rules and examples for indoor, outdoor, backup-venue, and insufficient-information cases. Added a final-verdict parser so labels mentioned in an explanation do not determine the result.
+
+| Check | Result |
+| --- | --- |
+| Offline suite | Passed: 76 tests. |
+| Live weather cases | Passed: 9 / 9 expected judgments. |
+| Saved itinerary | Passed all six current evaluations, including six live weather judgments. |
+| Deliberately incompatible itinerary | Correctly failed weather evaluation after the storm-day indoor event was replaced by the outdoor hike. The other five evaluations passed. |
+| Actual model access | gpt-4.1-mini succeeded through Vocareum. The provider reported gpt-4.1-mini-2025-04-14. |
+| Starter weather model | gpt-4.1-nano was rejected with HTTP 404 and model_not_found/deprecated. The model replacement is recorded in ADR 0004. |
+| Local notebook replay | Passed: cells 1–24 in a real local kernel, using the saved planner result and mocked weather responses with network requests blocked. |
+| Format failure cases | Correctly rejected missing, duplicate, ambiguous, and malformed verdict sections. Provider errors propagate. |
+| Environment and notebook syntax | Passed. Remaining TODO cells: 28 and 35. |
+
+The live checks used 21 successful mini-model requests and one earlier rejected nano request. The nine cases cover indoor protection, outdoor rain/storm exposure, an indoor rain backup, clear weather, unknown setting, unknown weather, an open-sided canopy, and an outdoor veranda backup. The [recorded results](examples/weather-evaluation-checks.json) include the exact inputs, responses, verdicts, and token usage.
+
+The sample initial itinerary was reused without another planner request. The negative plan was a separate copy; its recalculated total was 120 of the 130-unit budget, leaving weather as its only evaluation failure. It did not replace the saved initial plan.
+
+The existing Windows ZeroMQ fallback warning appeared in the kernel test; the test passed.
+
 ## Rubric status
 
-R1, R5, and R6 are complete. R2, R3, and R4 remain pending. The sample initial plan still has only one activity on June 12, which meets the initial requirement. The revision stage must handle the later request for at least two activities per day and pass all final evaluations.
+R1, R2, R5, and R6 are complete. R3 and R4 remain pending. The weather evaluator is implemented and tested, but the final revised plan must still pass it again. The traveler-feedback evaluator, revision trace, full notebook run, and submission package remain ahead.
 
-Next: complete the LLM weather-evaluation prompt, then the activity-tool description and revision prompt. Full-kernel execution, the final revision trace, and submission packaging remain pending.
+Next: finish the activity-tool docstring and revision prompt, including dynamically generated tool descriptions, initial and final evaluation calls, and final_answer_tool termination.
