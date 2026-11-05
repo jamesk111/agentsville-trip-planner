@@ -97,8 +97,37 @@ The sample initial itinerary was reused without another planner request. The neg
 
 The existing Windows ZeroMQ fallback warning appeared in the kernel test; the test passed.
 
+## Stage 6 — November 5, 2026
+
+Completed the activity lookup docstring and revision prompt. Tool descriptions are generated from the actual functions. The prompt includes the required role, feedback, tool parameters, THOUGHT/ACTION/OBSERVATION protocol, TravelPlan schema, initial evaluation, later evaluation, and final-answer exit.
+
+| Check | Result |
+| --- | --- |
+| Offline suite | Passed: 120 tests. |
+| Final live revision | Passed in 8 model steps, within the 15-step limit. |
+| Saved final cost | 130 / 130 units, up from the 115-unit initial plan. |
+| Activities per day | 3 on June 10, 2 on June 11, and 2 on June 12. |
+| All supplied evaluations | Passed all seven, including the gpt-4.1 traveler-feedback judgment. |
+| Added schedule evaluation | Passed city, coverage, source weather, placement, duplicates, timing, reasons, and named interest claims. |
+| Exact final candidate | The returned plan matched the successful evaluation candidate. The actual final_answer_tool was invoked. |
+| Independent final evaluation | Passed all eight checks again after the agent returned. |
+| Recorded trace replay | Passed with the actual tools and replayed model responses. |
+| Local kernel replay | Passed cells 1–38 with the saved initial plan, recorded revision messages, mocked weather/feedback replies, and blocked network access. |
+| Strict completion check | Passed: no TODO markers remain. |
+| Environment check | Passed. |
+
+The final recorded run made 47 model requests: 8 revision responses, 34 weather judgments, and 5 feedback judgments, including the independent final evaluation. Vocareum reported gpt-4.1-mini-2025-04-14 and gpt-4.1-2025-04-14. The [saved plan](examples/revised-plan.json) and [trace/check results](examples/revision-checks.json) retain the actual output and model usage.
+
+The loop rejected an initial lookup before evaluating the original plan. Later evaluations rejected an out-of-order activity list and an unsupported interest claim. The model corrected both before final_answer_tool was allowed to return. Four large-plan actions needed the starter's JSON-repair helper; repaired objects were still checked against the tool interface, schema, and stopping rules.
+
+Development checks exposed copying/format problems in a 15-step run and inaccurate preference explanations in a completed candidate. These led to the documented original-plan default and the named-interest check. A trace-check harness initially assumed the first response had been an executed action; it was corrected to inspect the first executed tool, preserving rejected responses in the trace.
+
+The feedback evaluator now reads its final label separately from its analysis and also counts activities for the fixed course feedback. Schedule consistency is an additional evaluation, bringing the current list to eight while preserving all seven supplied checks. Decisions and tradeoffs are in ADR 0005.
+
+The existing Windows ZeroMQ fallback warning appeared in the kernel test; the test passed. The helper library remains unchanged.
+
 ## Rubric status
 
-R1, R2, R5, and R6 are complete. R3 and R4 remain pending. The weather evaluator is implemented and tested, but the final revised plan must still pass it again. The traveler-feedback evaluator, revision trace, full notebook run, and submission package remain ahead.
+All six graded criteria are implemented and checked. The full fresh live notebook run, narrative summary, final saved-output review, and submission ZIP are still pending. The recorded local replay does not replace that final live run.
 
-Next: finish the activity-tool docstring and revision prompt, including dynamically generated tool descriptions, initial and final evaluation calls, and final_answer_tool termination.
+Next: run the complete notebook from a fresh kernel, review the result against the rubric, prepare the narrative summary, and package the submission without credentials or the local environment.
