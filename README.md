@@ -59,7 +59,7 @@ cd agentsville-trip-planner
 bash scripts/setup.sh
 ~~~
 
-If using the submission ZIP, extract it into one folder, open Git Bash there, and run bash scripts/setup.sh. The ZIP contains the same setup and test files.
+If using the submission ZIP, extract it into one folder and follow its included README. It gives the direct setup commands because the course ZIP omits development scripts and tests.
 
 The script runs uv sync --locked, registers the **Python (AgentsVille Trip Planner)** kernel in .venv, and creates .env from .env.example if it does not already exist. It leaves an existing .env alone. No global Python environment or global Jupyter kernel is changed.
 
@@ -146,7 +146,7 @@ Save the notebook, then use **Kernel > Shut Down All Kernels** in JupyterLab. St
 
 ## Submission
 
-The submission is agentsville-trip-planner-submission.zip. It contains the executed notebook, supplied helper, local configuration helper, locked environment files, setup/check scripts, tests, and documentation. The .env.example file is a template; the real .env, .venv, caches, logs, and development artifacts are excluded.
+The submission is agentsville-trip-planner-submission.zip. It contains eight files: the executed notebook, project_lib.py, local_setup.py, .env.example, pyproject.toml, uv.lock, .python-version, and a short standalone README. Tests, development notes, architecture records, setup/check scripts, credentials, local environments, and Git history are excluded from the course ZIP. They remain in this repository where applicable.
 
 The notebook imports local_setup.py, so keep the files together when extracting the ZIP. Follow the setup instructions above to run it. The [Stage 7 notes](docs/stage-7-submission.md) describe the final review. The ZIP is prepared for manual upload to the course submission page; the GitHub repository retains the project history.
 

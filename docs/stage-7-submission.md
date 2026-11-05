@@ -36,10 +36,23 @@ An earlier complete pass reached the final summary, but the separate results-exp
 
 ## Submission contents
 
-The ZIP contains the executed notebook and all supporting source, setup, configuration templates, tests, and documentation. It excludes the real API key, local environment, Git history, caches, logs, and development artifacts. The supplied project_lib.py is unchanged.
+The course ZIP contains eight files:
 
-The archive contains 44 files. Every archived file was compared with its source, and the notebook has 31 consecutive execution counts with no error outputs. The credential and attribution scans passed.
+- project_starter.ipynb
+- project_lib.py
+- local_setup.py
+- .env.example
+- pyproject.toml
+- uv.lock
+- .python-version
+- README.md, with standalone setup and run instructions
 
-From a clean extracted copy, bash scripts/setup.sh installed the locked environment and registered its local kernel. All 126 offline tests passed, including the full notebook replay with network access blocked. Environment and strict completion checks passed too. The existing Windows ZeroMQ fallback warning appeared; it did not fail the test. The real key was never copied into that extracted folder.
+The notebook imports both Python helpers. The configuration template and locked environment files support the local setup. The included README explains how to install that environment, configure a key, register the kernel, run the notebook, and shut it down.
 
-The course upload is a manual step.
+Tests, walkthroughs, architecture records, setup/check scripts, and development logs stay outside the course ZIP. The real key, local environment, caches, development artifacts, and Git history are excluded. The supplied project_lib.py is unchanged.
+
+The original 44-file project archive was used to verify the full test suite from a clean extraction: all 126 tests, environment checks, and strict completion checks passed. That broader archive is separate from the final course submission.
+
+The smaller eight-file submission was also extracted into a new folder. Its locked environment installed with uv sync --locked --no-dev, and its own local kernel executed the notebook setup, input models, supplied data lookups, and initial planner setup with network access blocked and a fake key. It ran without repository-only docs, tests, or scripts. The saved notebook still has all 31 consecutive execution counts, no error outputs, and its successful final evaluation. Each archived file was compared with its source; credential and attribution scans passed.
+
+The existing Windows ZeroMQ fallback warning appeared during the kernel checks; they passed. The course upload remains a manual step.

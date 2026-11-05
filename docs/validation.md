@@ -145,10 +145,10 @@ The final submission notebook completed all 31 code cells in order in a fresh lo
 | Independent final evaluation | All eight checks passed, with no failures. |
 | Narrative summary | Generated, displayed, and manually checked against the final source records. |
 | Offline suite in project | 126 passed, including full notebook replay with network access blocked. |
-| Clean extracted ZIP setup | Passed using the included setup script and lockfile. |
-| Offline suite in extracted ZIP | 126 passed, including its own local notebook kernel replay. |
+| Clean extracted full-project archive setup | Passed using the included setup script and lockfile. |
+| Offline suite in extracted full-project archive | 126 passed, including its own local notebook kernel replay. |
 | Extracted environment and strict completion checks | Passed. |
-| ZIP contents | 44 source, notebook, setup, test, and documentation files; byte comparison passed. |
+| Full-project verification archive | 44 source, notebook, setup, test, and documentation files; byte comparison passed. |
 | Notebook output review | 31 consecutive execution counts; no error outputs. |
 | Credential and attribution audit | Passed; real key, local environment, development artifacts, and Git history excluded. |
 | Supplied helper | Unchanged from the original download. |
@@ -160,3 +160,9 @@ The first full pass completed the notebook cells but exposed a quoting error in 
 The existing Windows ZeroMQ fallback warning appeared in both offline kernel tests. Both passed. The fresh extracted environment also used uv's normal file-copy fallback when hardlinks were unavailable.
 
 The six graded rubric criteria and the assignment's final-run checks are complete. See [Stage 7](stage-7-submission.md), [final results and trace](examples/final-live-run.json), [final plan](examples/final-plan.json), and [summary](examples/final-trip-summary.md). The ZIP is ready for manual course upload; it has not been submitted.
+
+### Submission-only package review
+
+The final course ZIP was reduced from the full project archive to eight files: project_starter.ipynb, project_lib.py, local_setup.py, .env.example, pyproject.toml, uv.lock, .python-version, and a standalone README. Development tests, scripts, walkthroughs, architecture records, and logs are excluded. The full repository retains them.
+
+A new extraction of this smaller ZIP installed its locked environment without development dependencies and registered its own local kernel. The notebook setup, input validation, source weather/activity lookups, and initial planner setup passed with network access blocked and a fake key. No repository-only docs, tests, or scripts were present. The archive retained the completed live notebook and all 31 consecutive execution counts. File comparison, credential scan, and attribution scan passed. No additional model requests were made for this packaging check.
